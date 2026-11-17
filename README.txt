@@ -22,3 +22,5 @@ BLIJFT BESTAAN
 LET OP
 - 'Voortgang resetten' in Statistieken verwijdert ALLES, inclusief patenten. Dit is anders dan prestige.
 - Lokale opslag synchroniseert niet vanzelf tussen browsers of apparaten.
+
+VERSIE 6 — Winstupgrades zijn beter verdeeld: 60% x2, 25% x3, 10% x4 en 5% x10. Dit geldt voor upgrades per machine en de globale winstupgrades. Bestaande saves blijven werken.
