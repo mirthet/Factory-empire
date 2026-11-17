@@ -1,24 +1,24 @@
-FACTORY EMPIRE — EERSTE SPEELBARE VERSIE
+FACTORY EMPIRE V5 — PRESTIGE & PATENTEN
+=====================================
+Open index.html in een browser of upload de vier bestanden naar dezelfde GitHub Pages-repository.
 
-Open index.html in Chrome, Edge of Safari (of via VS Code Live Server).
-De game bestaat uit:
-- index.html (schermen)
-- style.css (vormgeving)
-- game.js (spelregels en automatisch opslaan)
+NIEUW
+- Tabblad Patenten: prestige reset voor 1 patent per € 1.000.000 verdiend IN DE HUIDIGE RONDE.
+- Vanaf 1 patent beschikbaar voor claimen: handmatige reset na bevestiging.
+- Elke patent is +2% permanente winst voor alle machines.
+- Permanente upgrade met patenten: +1 procentpunt per patent per niveau (2%, 3%, 4%...).
+- Patentupgrades kosten achtereenvolgens 10, 25, 63, ... patenten.
+- Uitgegeven patenten blijven meetellen voor je winstbonus: totaal ooit verdiende patenten bepaalt de bonus; beschikbare patenten zijn alleen voor aankoop.
+- Een prestige-reset verwijdert machines, managers, geld en gewone upgrades, maar bewaart patenten en hun verbeteringen.
+- Oude opgeslagen voortgang wordt automatisch ingelezen; bij een bestaande v4-game wordt eerder totaal verdiend geld als de huidige speelronde behandeld.
 
-SPELREGELS
-1. Je begint met 1 werkbank en € 25.
-2. Druk bij een machine op START PRODUCTIE. Na de productietijd ontvang je geld.
-3. Gebruik KOOP om meer machines van hetzelfde type te kopen (x1, x10 of MAX).
-4. Neem in de tab MANAGERS een manager aan om automatisch te produceren.
-5. Alleen machines met een manager leveren offline geld op (maximaal 8 uur per afwezigheid).
-6. Bij level 25, 50, 100, 200, 400 en 800 verdubbelt het inkomen van die machine.
-7. Het spel slaat je voortgang automatisch op in de browser van je apparaat.
+BLIJFT BESTAAN
+- 10 machines, handmatig starten per machine, automatische productie met managers
+- Offline inkomsten (max 8 uur)
+- Upgrades per machine en globale upgrades
+- x1, x10, NEXT en MAX
+- Automatisch opslaan op hetzelfde browseradres
 
-BELANGRIJK
-- Opslag gaat via localStorage: wissen van browsergegevens kan je save verwijderen.
-- Voortgang synchroniseert niet tussen apparaten.
-- Er is nog geen server, account, prestige of cloud-save.
-- Offline berekening gebruikt de klok van het apparaat. Dit is voor een eerste prototype;
-  voor een publieke game zou validatie door een server beter zijn.
-- Lettertype wordt via Google Fonts opgehaald, maar de game werkt ook zonder internet.
+LET OP
+- 'Voortgang resetten' in Statistieken verwijdert ALLES, inclusief patenten. Dit is anders dan prestige.
+- Lokale opslag synchroniseert niet vanzelf tussen browsers of apparaten.
