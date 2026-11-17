@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101d35">
+  <meta name="description" content="Factory Empire: bouw je eigen fabriek, koop managers en verdien ook offline.">
+  <title>Factory Empire — Idle Tycoon</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">⚙</span><div><strong>FACTORY <span>EMPIRE</span></strong><small>INDUSTRIAL IDLE TYCOON</small></div></div>
+      <div class="save-indicator" id="saveIndicator" aria-live="polite">● Opgeslagen</div>
+    </header>
+
+    <main class="main">
+      <section class="hero" aria-label="Jouw fabriek">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+          <p class="eyebrow">JOUW INDUSTRIËLE IMPERIUM</p>
+          <h1>Van werkbank tot <em>wereldfabriek.</em></h1>
+          <p class="intro">Start elke machine zelf, koop upgrades en huur managers in om de productie automatisch te laten draaien.</p>
+          <div class="balance-box"><span>JOUW VERMOGEN</span><strong id="cash" aria-live="polite">€ 25</strong><small id="income">€ 0 / seconde automatisch</small></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><span class="art-orbit orbit-1"></span><span class="art-orbit orbit-2"></span><span class="art-factory">🏭</span><span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">✦</span></div>
+      </section>
+
+      <section class="status-strip" aria-label="Statistieken">
+        <div><span class="status-icon">🔧</span><span><small>Machines in bezit</small><strong id="ownedCount">1</strong></span></div>
+        <div><span class="status-icon">👔</span><span><small>Actieve managers</small><strong id="managerCount">0 / 10</strong></span></div>
+        <div><span class="status-icon">🌙</span><span><small>Offline limiet</small><strong>8 uur</strong></span></div>
+      </section>
+
+      <nav class="tabs" role="tablist" aria-label="Spelschermen">
+        <button class="tab active" id="tabMachines" type="button" role="tab" aria-selected="true" aria-controls="panelMachines" data-tab="machines">🏭 <span>Machines</span></button>
+        <button class="tab" id="tabManagers" type="button" role="tab" aria-selected="false" aria-controls="panelManagers" data-tab="managers">👔 <span>Managers</span></button>
+        <button class="tab" id="tabStats" type="button" role="tab" aria-selected="false" aria-controls="panelStats" data-tab="stats">📊 <span>Statistieken</span></button>
+      </nav>
+
+      <section id="panelMachines" class="panel" role="tabpanel" aria-labelledby="tabMachines">
+        <div class="section-heading"><div><p class="eyebrow">PRODUCTIEOVERZICHT</p><h2>Jouw machines</h2></div><div class="buy-mode" role="group" aria-label="Koophoeveelheid"><button class="selected" data-buy="1" type="button">x1</button><button data-buy="10" type="button">x10</button><button data-buy="max" type="button">MAX</button></div></div>
+        <div id="machines" class="machine-list"></div>
+      </section>
+
+      <section id="panelManagers" class="panel" role="tabpanel" aria-labelledby="tabManagers" hidden>
+        <div class="section-heading"><div><p class="eyebrow">AUTOMATISEER JE FABRIEK</p><h2>Neem managers aan</h2></div></div>
+        <p class="panel-hint">Een manager start zijn machine na iedere productiecyclus automatisch opnieuw. Ook wanneer het spel gesloten is, blijft hij geld verdienen.</p>
+        <div id="managers" class="manager-list"></div>
+      </section>
+
+      <section id="panelStats" class="panel" role="tabpanel" aria-labelledby="tabStats" hidden>
+        <div class="section-heading"><div><p class="eyebrow">JOUW VOORTGANG</p><h2>Statistieken</h2></div></div>
+        <div class="stats-grid">
+          <div class="stat-card"><small>Totaal verdiend</small><strong id="statEarned">€ 0</strong></div>
+          <div class="stat-card"><small>Totaal uitgegeven</small><strong id="statSpent">€ 0</strong></div>
+          <div class="stat-card"><small>Gestarte producties</small><strong id="statCycles">0</strong></div>
+          <div class="stat-card"><small>Automatische opbrengst</small><strong id="statRate">€ 0 / sec</strong></div>
+        </div>
+        <div class="info-card"><h3>Hoe werkt offline productie?</h3><p>Alleen machines met een manager produceren automatisch door. Als je terugkomt, berekenen we de opbrengst over maximaal 8 uur afwezigheid. Je voortgang wordt op dit apparaat in je browser opgeslagen.</p></div>
+        <div class="danger-zone"><h3>Nieuw spel beginnen?</h3><p>Hiermee verwijder je je voortgang op dit apparaat.</p><button class="danger-button" id="resetButton" type="button">Voortgang resetten</button></div>
+      </section>
+
+      <footer>FACTORY EMPIRE <span>•</span> BOUW. VERDIEN. AUTOMATISEER.</footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="offlineModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="offlineTitle"><div class="moon-icon">🌙</div><p class="eyebrow">JE FABRIEK DRAAIDE DOOR</p><h2 id="offlineTitle">Welkom terug!</h2><p>Terwijl je weg was, hebben je managers gewoon doorgewerkt.</p><div class="offline-reward"><small>OFFLINE VERDIEND</small><strong id="offlineAmount">€ 0</strong><span id="offlineDuration">0 minuten afwezig</span></div><p class="offline-note" id="offlineLimitNote">100% opbrengst · maximaal 8 uur</p><button id="collectButton" class="primary-button" type="button">Geweldig, verder spelen!</button></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
